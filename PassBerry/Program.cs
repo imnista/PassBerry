@@ -18,7 +18,6 @@
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Main());
-                //Debug();
             }
             catch (Exception ex)
             {
@@ -41,7 +40,6 @@
                 Remarks = "test123"
             });
 
-            //p.Delete(new Guid("057c0313-e116-4a5a-ae59-8dfff69dabd8"));
             var all = p.GetAll();
         }
     }
