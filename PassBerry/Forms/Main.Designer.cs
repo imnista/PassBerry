@@ -221,6 +221,7 @@
             this.dataGridViewMain.Size = new System.Drawing.Size(1370, 763);
             this.dataGridViewMain.TabIndex = 1;
             this.dataGridViewMain.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMain_CellDoubleClick);
+            this.dataGridViewMain.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMain_RowLeave);
             // 
             // Main
             // 
@@ -232,6 +233,7 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PassBerry";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.panelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelFunction.ResumeLayout(false);

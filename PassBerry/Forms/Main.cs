@@ -118,10 +118,79 @@
             return result;
         }
 
+        private const int CpNocloseButton = 0x200;
+        private const int WmHotkey = 0x0312;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var myCreateParams = base.CreateParams;
+                myCreateParams.ClassStyle = myCreateParams.ClassStyle | CpNocloseButton;
+                return myCreateParams;
+            }
+        }
+
+        private bool IsCurrentPasteUsername = true;
+
+        private string GetCurrentPasteValue()
+        {
+            if (this.dataGridViewMain.SelectedRows.Count < 1) { return null; }
+            var currentSelectedItem = (Guid)this.dataGridViewMain.SelectedRows[0].Cells["Id"].Value;
+            var record = allDataCache.Find(i => i.Id == currentSelectedItem);
+            if (IsCurrentPasteUsername)
+            {
+                this.IsCurrentPasteUsername = false;
+                if (string.IsNullOrWhiteSpace(record.Username)) { return null; }
+                return record.Username;
+            }
+            else
+            {
+                this.IsCurrentPasteUsername = true;
+                if (record.Password == null) { return null; }
+                return SecureStringHelper.GetStringFromSecureString(record.Password);
+            }
+        }
+
+        protected override void WndProc(ref Message message)
+        {
+            switch (message.Msg)
+            {
+                case WmHotkey:
+                    switch (message.WParam.ToInt32())
+                    {
+                        // Shift + F2
+                        case 100:
+                            var text = this.GetCurrentPasteValue();
+                            if (!string.IsNullOrEmpty(text))
+                            {
+                                Clipboard.SetText(text);
+                                SendKeys.Send("^V");
+                                // Clipboard.Clear();
+                            }
+                            break;
+                    }
+                    break;
+            }
+            base.WndProc(ref message);
+        }
+
         private void CopyToClipBoard(object target)
         {
             if (target == null) return;
             Clipboard.SetDataObject(target, true);
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            // Register Hotkey: Shift + F2
+            // ID: 100
+            HotKeyHelper.RegisterHotKey(this.Handle, 100, HotKeyHelper.KeyModifiers.Shift, Keys.F2);
+        }
+
+        private void dataGridViewMain_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            this.IsCurrentPasteUsername = true;
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)

@@ -74,6 +74,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Handler\ResourceProcessor.cs" />
+    <Compile Include="Library\HotKeyHelper.cs" />
     <Compile Include="Library\ImageHelper.cs" />
     <Compile Include="Library\JsonHelper.cs" />
     <Compile Include="Library\SecureStringHelper.cs" />

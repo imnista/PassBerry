@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nap7.com")]
 [assembly: AssemblyProduct("PassBerry")]
-[assembly: AssemblyCopyright("Copyright © 2018 Nap7.com")]
+[assembly: AssemblyCopyright("A program under the GNU General Public License.")]
 [assembly: AssemblyTrademark("Nap7")]
 [assembly: AssemblyCulture("")]
 
