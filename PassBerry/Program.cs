@@ -26,21 +26,21 @@
             }
         }
 
-        private static void Debug()
-        {
-            var p = Handler.ResourceProcessor.GetInstance();
-            var id = Guid.NewGuid();
-            p.Save(new Model.RecordForDisplay
-            {
-                Id = id,
-                Name = "Baidu",
-                PictureForLogo = Image.FromFile(@"C:\Users\Hendry\Desktop\1.jpg"),
-                Keywords = "1;2;3;4",
-                Password = Library.SecureStringHelper.GetSecureStringFromString("1qaz2wsxE"),
-                Remarks = "test123"
-            });
+        //private static void Debug()
+        //{
+        //    var p = Handler.ResourceProcessor.GetInstance();
+        //    var id = Guid.NewGuid();
+        //    p.Save(new Model.RecordForDisplay
+        //    {
+        //        Id = id,
+        //        Name = "Baidu",
+        //        PictureForLogo = Image.FromFile(@"C:\Users\Hendry\Desktop\1.jpg"),
+        //        Keywords = "1;2;3;4",
+        //        Password = Library.SecureStringHelper.GetSecureStringFromString("1qaz2wsxE"),
+        //        Remarks = "test123"
+        //    });
 
-            var all = p.GetAll();
-        }
+        //    var all = p.GetAll();
+        //}
     }
 }
