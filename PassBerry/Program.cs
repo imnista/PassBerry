@@ -2,7 +2,6 @@
 {
     using PassBerry.Forms;
     using System;
-    using System.Drawing;
     using System.Windows.Forms;
 
     internal static class Program
