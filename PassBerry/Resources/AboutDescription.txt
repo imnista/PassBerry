@@ -10,4 +10,10 @@
 
 4. 点击最小化或关闭程序时，本程序将自动驻留到托盘运行，点击 Shift + F1 可重新召唤本程序，右键点击托盘，将退出本程序
 
-5. 可以配置证书，对本地密码进行加密
+5. 可以配置对称加密密钥，通过 Triple DES 算法对本地存储的密码进行加密
+
+	私钥 .pfx 证书应该指定存储到 Current User\Personal 中，你可以使用以下命令重新生成一个新的证书
+
+	makecert -r -pe -sky Exchange -n "CN=Hendry Test" -sv private.pvk public.cer 
+
+	pvk2pfx.exe -pvk private.pvk -pi "p@ssw0rd"  -spc public.cer -pfx private.pfx  -po "p@ssw0rd"

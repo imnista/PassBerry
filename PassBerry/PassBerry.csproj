@@ -84,6 +84,7 @@
     <Compile Include="Library\ImageHelper.cs" />
     <Compile Include="Library\JsonHelper.cs" />
     <Compile Include="Library\SecureStringHelper.cs" />
+    <Compile Include="Library\RSACryptoHelper.cs" />
     <Compile Include="Model\RecordForDisplay.cs" />
     <Compile Include="Model\Record.cs" />
     <Compile Include="Program.cs" />
