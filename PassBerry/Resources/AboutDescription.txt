@@ -1,4 +1,6 @@
-﻿使用说明：
+﻿See the source code at GitHub - https://github.com/imnista/PassBerry
+
+使用说明：
 
 1. 双击任意单元格，即可复制单元格的内容
 

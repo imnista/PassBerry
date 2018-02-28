@@ -27,7 +27,7 @@
         private void InitializeMainForm()
         {
             var version = Assembly.GetExecutingAssembly().GetName().Version;
-            this.Text = $"PassBerry {version.Major}.{version.Minor}";
+            this.Text = $"PassBerry {version.Major}.{version.Minor} - Press Shift + F2 to paste username and password";
 
             this.MinimumSize = new Size(700, 500);
             //this.buttonAdd.Image = Properties.;
@@ -118,19 +118,7 @@
             return result;
         }
 
-        private const int CpNocloseButton = 0x200;
         private const int WmHotkey = 0x0312;
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                var myCreateParams = base.CreateParams;
-                myCreateParams.ClassStyle = myCreateParams.ClassStyle | CpNocloseButton;
-                return myCreateParams;
-            }
-        }
-
         private bool IsCurrentPasteUsername = true;
 
         private string GetCurrentPasteValue()
@@ -187,7 +175,7 @@
             // ID: 100
             HotKeyHelper.RegisterHotKey(this.Handle, 100, HotKeyHelper.KeyModifiers.Shift, Keys.F2);
         }
-
+        
         private void dataGridViewMain_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             this.IsCurrentPasteUsername = true;

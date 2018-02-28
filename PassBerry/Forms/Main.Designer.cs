@@ -194,6 +194,7 @@
             this.buttonSettings.Size = new System.Drawing.Size(50, 50);
             this.buttonSettings.TabIndex = 1;
             this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Visible = false;
             // 
             // buttonAbout
             // 
