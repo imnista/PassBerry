@@ -1,4 +1,5 @@
 
-*.exe
-*.dll
-*.pdb
+**/bin
+**/packages
+**/obj
+**/.vs
