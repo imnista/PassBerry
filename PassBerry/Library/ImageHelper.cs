@@ -11,6 +11,7 @@
         public static string GetBase64StringFromImage(Image image)
 
         {
+            if (image == null) { return null; }
             var ms = new MemoryStream();
             image.Save(ms, ImageFormat.Jpeg);
             byte[] buffer = ms.ToArray();
@@ -43,7 +44,7 @@
         }
 
         // 按比例缩放图片
-        public Image ZoomPicture(Image SourceImage, int TargetWidth, int TargetHeight)
+        public static Image ZoomPicture(Image SourceImage, int TargetWidth, int TargetHeight)
         {
             int IntWidth; //新的图片宽
             int IntHeight; //新的图片高

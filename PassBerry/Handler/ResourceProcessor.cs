@@ -5,6 +5,7 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Resources;
 
@@ -12,6 +13,13 @@
     {
         private ResourceProcessor()
         {
+            if (!File.Exists(ResXFilePath))
+            {
+                using (var writer = new ResXResourceWriter(ResXFilePath))
+                {
+                    writer.Generate();
+                }
+            }
         }
 
         private static readonly string ResXFilePath = "PassBerry.data";
@@ -76,7 +84,7 @@
             var resx = new List<DictionaryEntry>();
             using (var reader = new ResXResourceReader(ResXFilePath))
             {
-                resx = reader.Cast<DictionaryEntry>().ToList();
+                resx = reader.Cast<DictionaryEntry>().OrderBy(i => i.Key).ToList();
                 var existingResource = resx.Where(r => r.Key.ToString() == key).FirstOrDefault();
                 if (existingResource.Key == null && value != null) // NEW!
                 {

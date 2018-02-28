@@ -234,6 +234,7 @@
             this.buttonSelectLogo.TabIndex = 12;
             this.buttonSelectLogo.Text = "File...";
             this.buttonSelectLogo.UseVisualStyleBackColor = true;
+            this.buttonSelectLogo.Click += new System.EventHandler(this.buttonSelectLogo_Click);
             // 
             // pictureBoxLogo
             // 
@@ -243,6 +244,7 @@
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.tableLayoutPanelForm.SetRowSpan(this.pictureBoxLogo, 3);
             this.pictureBoxLogo.Size = new System.Drawing.Size(238, 84);
+            this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogo.TabIndex = 13;
             this.pictureBoxLogo.TabStop = false;
             // 
@@ -264,6 +266,7 @@
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
@@ -273,6 +276,7 @@
             this.buttonSave.TabIndex = 0;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // Edit
             // 

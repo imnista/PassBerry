@@ -1,16 +1,17 @@
-﻿using PassBerry.Handler;
-using PassBerry.Library;
-using PassBerry.Model;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Reflection;
-using System.Security;
-using System.Windows.Forms;
-
-namespace PassBerry.Forms
+﻿namespace PassBerry.Forms
 {
+    using PassBerry.Handler;
+    using PassBerry.Library;
+    using PassBerry.Model;
+    using PassBerry.Properties;
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Drawing;
+    using System.Reflection;
+    using System.Security;
+    using System.Windows.Forms;
+
     public partial class Main : Form
     {
         private static readonly string defalutPasswordPattern = "******";
@@ -71,7 +72,7 @@ namespace PassBerry.Forms
             foreach (var item in data)
             {
                 dataTable.Rows.Add(
-                    item.PictureForLogo,
+                    item.PictureForLogo == null ? Resources.acorn_40px : item.PictureForLogo,
                     item.Name,
                     item.Remarks,
                     item.Username,
@@ -140,7 +141,7 @@ namespace PassBerry.Forms
         {
             var dataGrid = this.dataGridViewMain;
             var targetCell = dataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            
+
             // If it is password field, show the characters
             if (e.ColumnIndex == dataGrid.Columns["PasswordForDisplay"].Index)
             {
@@ -161,24 +162,40 @@ namespace PassBerry.Forms
             this.CopyToClipBoard(targetCell.Value);
         }
 
-        private void tableLayoutPanelFunction_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-
+            var result = new Edit(null).ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                allDataCache = ResourceProcessor.GetInstance().GetAll();
+                this.LoadData(allDataCache);
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-
+            if (this.dataGridViewMain.SelectedRows.Count < 1) { return; }
+            var currentSelectedItem = (Guid)this.dataGridViewMain.SelectedRows[0].Cells["Id"].Value;
+            var record = allDataCache.Find(i => i.Id == currentSelectedItem);
+            var result = new Edit(record).ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                allDataCache = ResourceProcessor.GetInstance().GetAll();
+                this.LoadData(allDataCache);
+            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
+            if (this.dataGridViewMain.SelectedRows.Count < 1) { return; }
+            var currentSelectedItem = (Guid)this.dataGridViewMain.SelectedRows[0].Cells["Id"].Value;
+            var confirmResult = MessageBox.Show("Are you sure to delete the current item?", "Delete Item", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+            if (confirmResult == DialogResult.Yes)
+            {
+                ResourceProcessor.GetInstance().Delete(currentSelectedItem);
+                allDataCache = ResourceProcessor.GetInstance().GetAll();
+                this.LoadData(allDataCache);
+            }
         }
 
         private void buttonAbout_Click(object sender, EventArgs e)

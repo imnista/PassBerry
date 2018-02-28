@@ -94,7 +94,6 @@
             this.tableLayoutPanelFunction.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelFunction.Size = new System.Drawing.Size(1370, 54);
             this.tableLayoutPanelFunction.TabIndex = 0;
-            this.tableLayoutPanelFunction.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelFunction_Paint);
             // 
             // textBoxSearch
             // 
