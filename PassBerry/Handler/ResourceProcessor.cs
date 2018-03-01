@@ -11,6 +11,9 @@
 
     internal class ResourceProcessor
     {
+        private static readonly string ResXFilePath = "PassBerry.data";
+        private static ResourceProcessor singleton = new ResourceProcessor();
+
         private ResourceProcessor()
         {
             if (!File.Exists(ResXFilePath))
@@ -21,9 +24,6 @@
                 }
             }
         }
-
-        private static readonly string ResXFilePath = "PassBerry.data";
-        private static ResourceProcessor singleton = new ResourceProcessor();
 
         public static ResourceProcessor GetInstance()
         {

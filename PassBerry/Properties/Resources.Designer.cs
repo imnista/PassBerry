@@ -61,13 +61,25 @@ namespace PassBerry.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 使用说明：
+        ///   Looks up a localized string similar to See the source code at GitHub - https://github.com/imnista/PassBerry
         ///
-        ///1. 双击即可复制单元格项目的数据
-        ///2. 双击密码即可显示明文
-        ///3. 注册一个特别的快捷键，第一次按键时，就会粘贴当前的用户名，再次按下，会粘贴密码
-        ///4. 可以驻留托盘运行
-        ///5. 可以配置证书，对本地密码进行加密.
+        ///使用说明：
+        ///
+        ///1. 双击任意单元格，即可复制单元格的内容
+        ///
+        ///2. 双击隐藏的密码，可显示明文
+        ///
+        ///3. 点击 Shift + F2 即可粘贴当前选中行的用户名和密码，第一次按键时，会粘贴用户名，再次按下，会粘贴密码
+        ///
+        ///4. 点击最小化或关闭程序时，本程序将自动驻留到托盘运行，点击 Shift + F1 可重新召唤本程序，右键点击托盘，将退出本程序
+        ///
+        ///5. 可以配置对称加密密钥，通过 Triple DES 算法对本地存储的密码进行加密
+        ///
+        ///	私钥 .pfx 证书应该指定存储到 Current User\Personal 中，你可以使用以下命令重新生成一个新的证书
+        ///
+        ///	makecert -r -pe -sky Exchange -n &quot;CN=Hendry Test&quot; -sv private.pvk public.cer 
+        ///
+        ///	pvk2pfx.exe -pvk private.pvk -pi &quot;p@ssw0rd&quot;  -spc public.cer [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string AboutDescription {
             get {
@@ -112,6 +124,36 @@ namespace PassBerry.Properties {
             get {
                 object obj = ResourceManager.GetObject("edit_40px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon key {
+            get {
+                object obj = ResourceManager.GetObject("key", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Nap7_PassBerry_Default_cer {
+            get {
+                object obj = ResourceManager.GetObject("Nap7_PassBerry_Default_cer", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Nap7_PassBerry_Default_pfx {
+            get {
+                object obj = ResourceManager.GetObject("Nap7_PassBerry_Default_pfx", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

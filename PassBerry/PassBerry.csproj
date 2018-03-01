@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>key.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\key.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>PassBerry.Program</StartupObject>
@@ -80,6 +80,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Handler\ResourceProcessor.cs" />
+    <Compile Include="Handler\SettingsProcessor.cs" />
     <Compile Include="Library\HotKeyHelper.cs" />
     <Compile Include="Library\ImageHelper.cs" />
     <Compile Include="Library\JsonHelper.cs" />
@@ -125,8 +126,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
-    <Content Include="key.ico" />
+    <Content Include="Resources\key.ico" />
     <None Include="Resources\AboutDescription.txt" />
+    <None Include="Resources\Nap7.PassBerry.Default.cer" />
+    <None Include="Resources\Nap7.PassBerry.Default.pfx" />
     <None Include="Resources\settings_40px.png" />
     <None Include="Resources\acorn_40px.png" />
     <None Include="Resources\delete_40px.png" />
